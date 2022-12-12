@@ -1,6 +1,6 @@
 pipeline {
       environment {
-        imagename = "682566162190.dkr.ecr.ap-south-1.amazonaws.com/devops-test"
+        imagename = "590458663149.dkr.ecr.us-east-1.amazonaws.com/test"
       }
      agent any
      stages { 
@@ -14,7 +14,7 @@ pipeline {
      stage('Deploy Image') {
       steps{
         script {
-          sh "aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 682566162190.dkr.ecr.ap-south-1.amazonaws.com"
+          sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 590458663149.dkr.ecr.us-east-1.amazonaws.com"
           sh "docker push $imagename:$BUILD_NUMBER"
          }
        }
@@ -27,7 +27,7 @@ pipeline {
     }
     stage('Deploy k8s') {
       steps{
-         sh "sed -i 's|VERSION|$BUILD_NUMBER|g' deploy.yaml"
+         sh "sed -i 's|VERSION|$BUILD_NUMBER|g' deployment.yaml"
          sh "kubectl apply -f deployment.yaml"
          
 
