@@ -28,8 +28,8 @@ pipeline {
     stage('Deploy k8s') {
       steps{
          sh "sed -i 's|VERSION|$BUILD_NUMBER|g' deploy.yaml"
-         sh "kubectl apply -f deploy.yaml"
-         sh "kubectl apply -f service.yaml"
+         sh "kubectl apply -f deployment.yaml"
+         
 
       }
     }
