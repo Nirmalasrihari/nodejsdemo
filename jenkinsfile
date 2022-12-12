@@ -27,7 +27,7 @@ pipeline {
     }
     stage('Deploy k8s') {
       steps{
-         sh "sed -i 's|VERSION|$BUILD_NUMBER|g' deployment.yaml"
+         sh "sed -i 's|VERSION|$BUILD_NUMBER|g' deployment.yml"
          sh "kubectl apply -f deployment.yml"
          
 
