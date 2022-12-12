@@ -36,7 +36,7 @@ spec:
     spec:
       containers:
       - name: devops-test
-        image: 682566162190.dkr.ecr.ap-south-1.amazonaws.com/devops-test:VERSION 
+        image: 590458663149.dkr.ecr.us-east-1.amazonaws.com/test:VERSION 
         ports:
           - containerPort: 4444
             name: devops-test
